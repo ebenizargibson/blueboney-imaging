@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Blue Boney Base ─────────────────────────────────── */
+  --bb-ink:         #1E293B;
+  --bb-ink-soft:    #64748B;
+  --bb-ink-muted:   #94A3B8;
+  --bb-surface:     #FFFFFF;
+  --bb-bg:          #F8FAFC;
+  --bb-bg2:         #F1F5F9;
+  --bb-border:      #E2E8F0;
+
+  /* ── Imaging Brand Colors ────────────────────────────── */
+  --imaging-primary:   #1E3A5F;   /* deep navy */
+  --imaging-hover:     #162D4A;
+  --imaging-accent:    #0EA5E9;   /* sky blue */
+  --imaging-accent-hover: #0284C7;
+  --imaging-critical:  #DC2626;   /* critical red */
+  --imaging-stat:      #F59E0B;   /* stat amber */
+  --imaging-surface:   #F0F4F8;
+  --imaging-border:    #CBD5E1;
+  --imaging-light:     #E0F2FE;   /* accent light */
+
+  /* ── Semantic Status ─────────────────────────────────── */
+  --imaging-success:  #10B981;
+  --imaging-warning:  #F59E0B;
+  --imaging-danger:   #EF4444;
+
+  /* ── Status Backgrounds ──────────────────────────────── */
+  --imaging-success-bg:  #ECFDF5;
+  --imaging-warning-bg:  #FFFBEB;
+  --imaging-danger-bg:   #FEF2F2;
+  --imaging-critical-bg: #FEF2F2;
+  --imaging-accent-bg:   #F0F9FF;
+  --imaging-neutral:     #475569;
+  --imaging-neutral-bg:  #F1F5F9;
+
+  /* ── Layout ──────────────────────────────────────────── */
+  --sidebar-w:  260px;
+  --topbar-h:   64px;
+
+  /* ── Shape & Shadow ──────────────────────────────────── */
+  --radius-sm:  6px;
+  --radius:     10px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  20px;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06);
+  --shadow:     0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:  0 10px 30px rgba(0,0,0,0.10);
+  --shadow-xl:  0 20px 40px rgba(0,0,0,0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bb-bg);
+  color: var(--bb-ink);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bb-border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bb-ink-muted); }
