@@ -2,7 +2,7 @@
 
 import { getToken } from './auth'
 
-const BASE = 'https://blueboney.vercel.app/api/imaging'
+const BASE = process.env.NEXT_PUBLIC_IMAGING_API_BASE ?? 'https://blueboney.vercel.app/api/imaging'
 
 async function req<T = unknown>(
   method: string,
