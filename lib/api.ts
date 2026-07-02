@@ -21,6 +21,10 @@ async function req<T = unknown>(
     },
     ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
   })
+  if (res.status === 401) {
+    if (typeof window !== 'undefined') window.location.href = '/login'
+    throw new Error('Session expired')
+  }
   const data = await res.json().catch(() => ({}))
   if (!res.ok) throw Object.assign(new Error(data?.error ?? res.statusText), { status: res.status, data })
   return data as T

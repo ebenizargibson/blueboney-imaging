@@ -65,8 +65,7 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
       <ImagingHeader staff={staff ?? {}} />
 
       <main
-        className="pt-16 pb-20 md:pb-6 transition-all duration-200"
-        style={{ marginLeft: 260 }}
+        className="pt-16 pb-20 md:pb-6 transition-all duration-200 md:ml-[260px]"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-6">
           {children}

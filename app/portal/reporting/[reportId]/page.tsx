@@ -5,6 +5,7 @@ import { ArrowLeft, Save, CheckCircle, PenLine, History } from 'lucide-react'
 import { PageLoader }          from '@/components/shared/EmptyState'
 import { StatusBadge, statusVariant } from '@/components/shared/StatusBadge'
 import { reportsApi }          from '@/lib/api'
+import { useToast, ToastContainer } from '@/lib/hooks/useToast'
 
 interface Report {
   id:                     string
@@ -34,6 +35,7 @@ export default function ReportEditorPage() {
   const params = useParams<{ reportId: string }>()
   const router = useRouter()
   const [report,    setReport]    = useState<Report | null>(null)
+  const { toasts, toast } = useToast()
   const [versions,  setVersions]  = useState<Version[]>([])
   const [loading,   setLoading]   = useState(true)
   const [saving,    setSaving]    = useState(false)
@@ -94,6 +96,7 @@ export default function ReportEditorPage() {
       })
       const d = await reportsApi.get(params.reportId) as { data?: Report }
       setReport(d?.data ?? null)
+      toast('Draft saved', 'success')
     } catch (e: unknown) { setError((e as Error).message) }
     setSaving(false)
   }
@@ -103,6 +106,7 @@ export default function ReportEditorPage() {
     setError('')
     try {
       await reportsApi.sign(params.reportId)
+      toast('Report signed and finalized', 'success')
       router.push('/portal/reporting')
     } catch (e: unknown) { setError((e as Error).message) }
     setSigning(false)
@@ -112,6 +116,7 @@ export default function ReportEditorPage() {
     if (!amendReason.trim()) return
     try {
       await reportsApi.amend(params.reportId, { amendment_reason: amendReason })
+      toast('Addendum submitted', 'success')
       setShowAmend(false)
       setAmendReason('')
     } catch (e: unknown) { setError((e as Error).message) }
@@ -278,6 +283,7 @@ export default function ReportEditorPage() {
           </div>
         </div>
       )}
+      <ToastContainer toasts={toasts} />
     </div>
   )
 }
